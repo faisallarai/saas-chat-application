@@ -6,6 +6,8 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { SessionProvider } from 'next-auth/react';
 import { auth } from '@/auth';
 import FirebaseAuthProvider from '@/components/firebase-auth-provider';
+import SubscriptionProvider from '@/components/subscription-provider';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -28,15 +30,18 @@ export default async function RootLayout({
       <html lang="en">
         <body className={`${inter.className} min-h-screen flex flex-col`}>
           <FirebaseAuthProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="system"
-              enableSystem
-              disableTransitionOnChange
-            >
-              <Header />
-              {children}
-            </ThemeProvider>
+            <SubscriptionProvider>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <Header />
+                {children}
+                <Toaster />
+              </ThemeProvider>
+            </SubscriptionProvider>
           </FirebaseAuthProvider>
         </body>
       </html>

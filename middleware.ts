@@ -5,7 +5,7 @@ import NextAuth from 'next-auth';
 const { auth } = NextAuth(authConfig);
 
 export default auth((req: NextRequest) => {
-  console.log(req);
+  console.log('req in middleware', req);
   return NextResponse.next();
 });
 

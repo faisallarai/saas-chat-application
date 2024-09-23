@@ -1,13 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import DemoGif from '@/images/landingPage/demo.gif';
-import { auth } from '@/auth';
 
 export default async function Home() {
-  const session = await auth();
-
-  console.log(session);
-
   return (
     <main className="">
       <div className="dark:bg-gray-900 relative isolate pt-4">

@@ -28,5 +28,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   },
   adapter: FirestoreAdapter(adminDb),
   session: { strategy: 'jwt' },
+  secret: process.env.AUTH_SECRET,
   ...authConfig,
 });
